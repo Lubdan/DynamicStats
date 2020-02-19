@@ -2,6 +2,7 @@ package lubdan.dynamicstats.events;
 
 import com.projectkorra.projectkorra.BendingPlayer;
 import com.projectkorra.projectkorra.GeneralMethods;
+import com.projectkorra.projectkorra.earthbending.EarthArmor;
 import com.projectkorra.projectkorra.event.AbilityStartEvent;
 import com.projectkorra.projectkorra.firebending.lightning.Lightning;
 import com.projectkorra.projectkorra.waterbending.multiabilities.WaterArmsSpear;
@@ -55,20 +56,17 @@ public class AbilityStarted implements Listener {
             Player player = event.getAbility().getPlayer();
             BendingPlayer bplayer = BendingPlayer.getBendingPlayer(player);
             if(bplayer.getElements().size() > 1 && !bplayer.isAvatarState()){
-                Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
-                    @Override
-                    public void run() {
-                        float baseabsorp = GeneralMethods.getAbsorbationHealth(player);
-                        if(bplayer.getElements().size() == 2){
-                            GeneralMethods.setAbsorbationHealth(event.getAbility().getPlayer(),baseabsorp * multibending);
-                        }
-                        if(bplayer.getElements().size() > 2){
-                            GeneralMethods.setAbsorbationHealth(event.getAbility().getPlayer(),baseabsorp * avatar);
-
-                        }
-                    }
-                },20);
+                if(bplayer.getElements().size() == 2){
+                    EarthArmor earmor = (EarthArmor) event.getAbility();
+                    earmor.setMaxGoldHearts((earmor.getMaxGoldHearts() *3) / 4);
+                }
+                if(bplayer.getElements().size() > 2){
+                    EarthArmor earmor = (EarthArmor) event.getAbility();
+                    earmor.setMaxGoldHearts(earmor.getMaxGoldHearts() / 2);
+                }
             }
+
+
         }
     }
 
