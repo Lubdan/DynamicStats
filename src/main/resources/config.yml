@@ -1,0 +1,5 @@
+Multibending-Multipler: ".75"
+Avatar-Multipler: ".50"
+# Above values are used for lightning and earth armor.
+Avatar-Spear-Toggle: true
+#Above boolean is used to disable freezing with waterarms spear when multibending 3 or more elements.

@@ -1,0 +1,7 @@
+name: Dynamicstats
+version: 1.0
+main: lubdan.dynamicstats.Dynamicstats
+api-version: 1.13
+authors:
+  - Lubdan #Code
+  - Shad7860 #Values and original concept
